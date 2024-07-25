@@ -7,16 +7,13 @@ public class Main {
         System.out.println("Оригинальная пара: " + pair);
 
         // Преобразуем значения пары с помощью анонимного класса, реализующего интерфейс PairTransformer
-        Pair<Integer, String> newPair = pair.map(new PairTransformer<String, Integer, Integer, String>() {
-            @Override
-            public Pair<Integer, String> transform(String str, Integer num) {
-                // Преобразуем строку в её длину
-                Integer newFirst = str.length();
-                // Создаем новую строку, объединяя оригинальную строку и число
-                String newSecond = str + " " + num;
-                // Возвращаем новую пару с преобразованными значениями
-                return new Pair<>(newFirst, newSecond);
-            }
+        Pair<Integer, String> newPair = pair.map((str, num) -> {
+            // Преобразуем строку в её длину
+            Integer newFirst = str.length();
+            // Создаем новую строку, объединяя оригинальную строку и число
+            String newSecond = str + " " + num;
+            // Возвращаем новую пару с преобразованными значениями
+            return new Pair<>(newFirst, newSecond);
         });
         System.out.println("Преобразованная пара: " + newPair);
     }

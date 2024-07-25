@@ -28,8 +28,8 @@ public class Pair<T, U> {
     }
 
     // Метод map для преобразования пары значений с помощью трансформера
-    public <R, S> Pair<R, S> map(PairTransformer<T, U, R, S> transformer) {
-        return transformer.transform(first, second);
+    public <R, S> Pair<R, S> map(BiFunction<T, U, Pair<R, S>> mapper) {
+        return mapper.apply(first, second);
     }
 
     @Override
